@@ -22,6 +22,6 @@ public class TestController {
 		testService.addOne(new BookType(null, "德语", 100));
 		modelMap.addAttribute("booktype",testService.getOneById(2));  //一般都是通过 ModelMap向freemarker模版中添加数据，也可以使用ModelAndView。
 		session.setAttribute("username", "xiaoqiang2");
-		return "test01";  //会自动去templates文件夹中找寻freemarker的模版文件（也就是有ftl后缀的文件）
+		return "test01";  //注意这里的文件访问形式，会自动去templates文件夹中找寻freemarker的模版文件（也就是test01.ftl文件）
 	}
 }
