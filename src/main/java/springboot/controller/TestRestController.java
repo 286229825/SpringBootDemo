@@ -1,11 +1,10 @@
 package springboot.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.entity.BookType;
@@ -16,10 +15,21 @@ import springboot.service.TestService;
 //而使用@Controller注解，可以返回页面，并可以往页面中添加数据
 //当前类使用@RestController注解，开发一个restful风格的api
 @RestController  
-@RequestMapping("/study_SpringBoot")
+@RequestMapping(value="/study_SpringBoot/bookType",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
 public class TestRestController {
 	
 	@Autowired
 	private TestService testService;
+	
+	@RequestMapping(value="/{id}",method=RequestMethod.GET)
+	public BookType getOneById(@PathVariable("id") Integer id) throws Exception {
+		return testService.getOneById(id);
+	}
+	
+	@RequestMapping(method=RequestMethod.POST)
+	public String addOne(BookType bookType) throws Exception {
+		testService.addOne(bookType);
+		return "success";
+	}
 	
 }

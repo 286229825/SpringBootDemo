@@ -9,7 +9,6 @@
 <script>
 	$(document).ready(function(){
 		var username="${Session.username}";
-		alert(username);
 		$("button").click(function(){
 			alert("Value: " + $("#test").val());
 		});
