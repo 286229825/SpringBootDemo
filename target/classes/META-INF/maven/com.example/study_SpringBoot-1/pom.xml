@@ -54,7 +54,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- 添加 c3p0 数据库连接池依赖 -->
+		<!-- 添加 c3p0 数据库连接池依赖呦呦呦 -->
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
