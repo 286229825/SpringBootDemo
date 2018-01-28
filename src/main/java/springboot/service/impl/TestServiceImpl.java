@@ -14,6 +14,8 @@ import springboot.entity.BookType;
 import springboot.mapper.TestMapper;
 import springboot.service.TestService;
 
+//注意：这里把spring的Cache注解都放在了实现类中，其实是不对的，一般是放在接口中的。
+
 @CacheConfig(cacheNames = "bookType")	//这个注解表示：会把当前类的所有方法的数据存到bookType缓存区中。
 @Service
 public class TestServiceImpl implements TestService {
