@@ -1,10 +1,9 @@
 package springboot.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +12,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import springboot.entity.BookType;
 import springboot.exception.MyJsonException;
-import springboot.exception.MyPageException;
 import springboot.service.TestService;
 
 //@RestController包含了  @Controller和 @ResponseBody两个注解，
@@ -38,11 +36,25 @@ public class TestRestController {
 	
 	@ApiOperation(value="添加图书信息",tags = "CategoryOrganizationResource",notes="添加一条图书类型记录")
 	@RequestMapping(method=RequestMethod.POST)
-	public String addOne(BookType bookType) throws Exception {
+	public String addOne(@RequestBody BookType bookType) throws Exception {
+		testService.addOne(bookType);
+		return "success";
+	}
+	
+	@ApiOperation(value="删除图书信息",tags = "CategoryOrganizationResource",notes="删除一条图书类型记录")
+	@RequestMapping(method=RequestMethod.DELETE)
+	public String delete(@ApiParam(value="图书类型ID") @RequestBody Integer id) throws Exception {
+		testService.deleteOne(id);
+		return "success";
+	}
+	
+	@ApiOperation(value="更新图书信息",tags = "CategoryOrganizationResource",notes="更新一条图书类型记录")
+	@RequestMapping(method=RequestMethod.PUT)
+	public String update(@ApiParam(value="图书类型ID") @RequestBody BookType bookType) throws Exception {
 		if (bookType.getId()==null) {
 			throw new MyJsonException("测试一下返回json数据的异常处理哦");
 		}
-		testService.addOne(bookType);
+		testService.updateOne(bookType);
 		return "success";
 	}
 	

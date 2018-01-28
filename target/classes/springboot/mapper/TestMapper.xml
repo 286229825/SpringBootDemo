@@ -16,4 +16,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES
 		  (NULL, #{typeName}, #{days})
 	</insert>
+	<update id="updateOne" parameterType="BookType">
+		UPDATE booktype
+		<set>
+			<if test="typeName!=null">
+			typeName=#{typeName},
+			</if>
+			<if test="typeName!=null">
+			days=#{days}
+			</if>
+		</set>
+		 WHERE id=#{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM booktype WHERE id=#{id}
+	</delete>
+	
+	<select id="getList" parameterType="list" resultType="BookType">
+		SELECT * FROM booktype WHERE id IN
+		<foreach collection="list" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</select>
 </mapper>

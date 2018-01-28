@@ -7,11 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import io.swagger.annotations.ApiModel;
 import springboot.entity.BookType;
 import springboot.exception.MyPageException;
 import springboot.service.TestService;
-import springfox.documentation.annotations.ApiIgnore;
 //@RestController包含了  @Controller和 @ResponseBody两个注解，
 //因此若使用@RestController注解则会将当前类的所有方法返回的数据直接转为json数据显示在前端页面中
 //因此若是采用restful风格开发则使用 @RestController注解

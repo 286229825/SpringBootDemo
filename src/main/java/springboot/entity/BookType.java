@@ -1,6 +1,13 @@
 package springboot.entity;
 
-public class BookType {
+import java.io.Serializable;
+
+//因为需要存入redis，所以需要实现序列化接口
+public class BookType implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2492560916832512835L;
 	private Integer id;
 	private String typeName;
 	private Integer days;

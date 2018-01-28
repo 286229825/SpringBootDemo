@@ -3,6 +3,7 @@ package springboot;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * 当前类是SpringBoot的入口类，启动当前类的main方法即可启动SpringBoot，它会自动启动其内置的服务器（默认为 Tomcat）
@@ -16,6 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
+@EnableCaching	//开启缓存
 @MapperScan(value="springboot.mapper")  //开启扫描 mapper 包
 public class StudySpringBoot1Application {
 	public static void main(String[] args) {
